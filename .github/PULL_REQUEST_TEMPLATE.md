@@ -22,9 +22,8 @@ Brief description of what this PR does and why.
 
 ## Testing
 
-- [ ] Unit tests pass (`npm test`)
-- [ ] Integration tests pass (`npm run test:bats`)
-- [ ] Coverage maintained at 100%
+- [ ] Tests pass with coverage at or above 80% (`npm test`)
+- [ ] Type check passes (`npm run typecheck`)
 - [ ] Linting passes (`npm run lint`)
 
 **Test cases added/updated**:
@@ -35,7 +34,7 @@ Brief description of what this PR does and why.
 
 - [ ] Updated relevant `.md` files in `docs/`
 - [ ] Updated `README.md` if needed
-- [ ] Updated sub-skill descriptions if needed
+- [ ] Updated `references/` files and the routing table in `SKILL.md` if needed
 - [ ] All links verified and working
 
 ## Checklist

@@ -10,7 +10,7 @@
   "replacementPatterns": [
     {
       "pattern": "^/",
-      "replacement": "https://github.com/lightspeedwp/linting/blob/main/"
+      "replacement": "https://github.com/lightspeedwp/ls-wp-linting/blob/main/"
     }
   ],
   "timeout": "20s",

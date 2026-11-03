@@ -87,9 +87,9 @@ labels:
     color: '00a0d2'
     description: 'WordPress-specific feature or issue'
 
-  - name: 'area: sub-skills'
+  - name: 'area: references'
     color: '6f42c1'
-    description: 'Affects sub-skills'
+    description: 'Affects the reference files in references/'
 
   - name: 'area: ci-cd'
     color: '239e46'

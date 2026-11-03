@@ -1,9 +1,4 @@
----
-name: json-linting
-description: Expert in JSON and JSON5 file linting and validation. Debug JSON syntax errors, validate package.json structure, fix formatting issues, and ensure schema compliance. Use this whenever the user mentions JSON files, JSON syntax errors, "unexpected token", "invalid JSON", package.json errors, JSON schema validation, JSON parsing failures, "malformed JSON", JSON structure issues, JSON format problems, or asks "why is this JSON invalid?" or "how do I fix this JSON error?" Also use for Prettier JSON formatting, JSON prettification, JSON linting, JSON structure validation, theme.json errors, block.json problems, or any JSON validator errors — even if they don't explicitly name a linting tool. Trigger on any JSON-related question or error message.
----
-
-# JSON Linting Skill
+# JSON linting
 
 Specialized expertise in JSON file validation, JSON5 support, and schema-based validation for WordPress projects.
 

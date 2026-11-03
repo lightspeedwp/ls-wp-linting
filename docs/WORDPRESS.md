@@ -20,7 +20,7 @@ Complete linting setup and best practices for WordPress block themes and plugins
 - **ESLint** with WordPress coding standards
 - **Prettier** for code formatting
 - **Webpack** for bundling
-- **Testing infrastructure** (Jest, @testing-library)
+- **Testing infrastructure** (`wp-scripts test-unit-js`, which runs Vitest from @wordpress/scripts 36)
 
 ### Installation
 
@@ -294,7 +294,7 @@ Create `.eslintrc.json` (extends wp-scripts):
 1. **Validate block.json** - Test with `wp-scripts build`
 2. **Use block namespacing** - `namespace/block-name` format
 3. **Register blocks properly** - Include required metadata
-4. **Test block rendering** - Use Jest tests for edit/save
+4. **Test block rendering** - Use Vitest unit tests for edit/save
 5. **Use WordPress hooks** - `wp_enqueue_scripts`, `enqueue_block_assets`
 6. **Version your plugin** - Update version in plugin.php and package.json
 7. **Internationalize strings** - Use `__()` and `_e()` for translations

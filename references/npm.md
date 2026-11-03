@@ -1,9 +1,4 @@
----
-name: npm-linting
-description: Expert in npm package.json linting and npm dependency validation. Debug package.json issues, validate structure, fix dependency conflicts, and optimize npm configurations for WordPress block themes and plugins. Use this when the user mentions package.json errors, npm warnings, dependency issues, version conflicts, npm audit failures, "cannot find module", "peer dependency", "npm ERR!", npm install failures, "ERESOLVE unable to resolve dependency", npm version mismatches, conflicting ESLint versions, or asks "why is npm failing?" or "how do I fix this npm error?" Also use for npm scripts problems, missing dependencies, dependency tree analysis, npm security audits, npm configuration optimization, WordPress wp-scripts setup, or npm package validation — even if they don't explicitly name a validation tool. Trigger on any npm-related error or question.
----
-
-# npm Linting Skill
+# npm linting
 
 Specialized expertise in package.json validation, npm dependency management, and npm configuration optimization for WordPress development.
 
@@ -128,9 +123,9 @@ npm audit fix           # Auto-fix if possible
 For WordPress block themes and plugins:
 
 - **Must-have deps**: `@wordpress/scripts` (themes) or `@wordpress/scripts` (plugins)
-- **wp-scripts** - Includes ESLint, Prettier, Jest, build tools
-- **wp-build** - Modular build setup for plugins
-- **Standard devDeps**: eslint, prettier, jest, @testing-library/react
+- **@wordpress/scripts** - Build, ESLint, stylelint, Prettier and test commands. From version 36, `test-unit-js` runs the project's own Vitest (install `vitest` and `vite`); Jest is only available through the maintenance-only `test-unit-jest`.
+- **@wordpress/build** - Build tool for WordPress plugins
+- **Standard devDeps**: `@wordpress/scripts`, `vitest`, `@testing-library/react` for component tests
 
 **WordPress package.json structure**:
 ```json

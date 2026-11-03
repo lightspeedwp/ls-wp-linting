@@ -1,3 +1,5 @@
+> **Historical record (superseded 3 Nov 2026).** This report describes an earlier plan for this repository. It mentions Jest, BATS, sub-skills and files that this repository no longer has, or never had. For the current structure see `SKILL.md`, `references/` and `scripts/README.md`.
+
 # Linting Skill - Build Summary
 
 ## Overview

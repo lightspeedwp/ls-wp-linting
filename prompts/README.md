@@ -85,7 +85,7 @@ If you create additional workflow prompts:
 2. Add brief description to this README
 3. Follow the structure above (Context → Prerequisites → Steps → Verification → Next Steps)
 4. Include WordPress-specific guidance where applicable
-5. Reference main documentation and sub-skills where relevant
+5. Reference main documentation and the reference files in `references/` where relevant
 
 ---
 

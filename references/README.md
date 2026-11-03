@@ -28,7 +28,7 @@ This directory holds (or references) external documentation that supports the li
 
 - **[wp-scripts Documentation](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/)**
   - Official WordPress build tool for block themes
-  - Includes ESLint, Prettier, Webpack, and Jest setup
+  - Includes ESLint, stylelint, Prettier and webpack setup; `test-unit-js` runs Vitest from version 36
 
 ### Linting Tools
 
@@ -55,31 +55,26 @@ This directory holds (or references) external documentation that supports the li
 ### Git Hooks
 
 - **[Lefthook Documentation](https://lefthook.dev/)**
-  - Git hook manager for the linting skill
+  - Git hook manager recommended for WordPress projects
   - Installation, configuration, and usage
 
 - **[Husky Documentation](https://typicode.github.io/husky/)** (Legacy)
   - Alternative Git hook manager
   - Note: Lefthook is preferred for this skill
 
-## Skill-Specific References
+## Reference files in this folder
 
-Within this skill, also see:
+`SKILL.md` routes each task to one of these: `javascript-typescript.md`, `css-scss.md`, `markdown.md`, `theme-json-block-json.md`, `json.md`, `npm.md`, `php.md`, `yaml-github-actions.md` and `lefthook-pre-commit.md`.
 
-- **docs/LEFTHOOK.md** — Local Lefthook configuration guide (preferred)
-- **docs/CONFIGURATION.md** — Local configuration file reference for all tools
-- **docs/TROUBLESHOOTING.md** — Solutions to 30+ common linting issues
-- **docs/WORDPRESS.md** — WordPress-specific linting setup
+## Skill-specific guides
 
-## Note on Husky vs. Lefthook
+- **docs/CONFIGURATION.md**: configuration file reference for all tools
+- **docs/TROUBLESHOOTING.md**: solutions to common linting issues
+- **docs/WORDPRESS.md**: WordPress-specific linting setup
+- **docs/CI-CD.md**: GitHub Actions workflows
 
-This skill uses **Lefthook** as its primary Git hook system:
-
-- ✅ **Lefthook** is the active hook manager (see `lefthook.yml` and `docs/LEFTHOOK.md`)
-- ⚠️ **Husky** is included in package.json for backward compatibility but is not the primary system
-
-The `prepare` script in package.json attempts to install both, but Lefthook is the recommended approach for new projects. If you're starting fresh, use Lefthook exclusively (and can optionally remove the Husky dependency).
+For Git hooks, use Lefthook as described in [lefthook-pre-commit.md](lefthook-pre-commit.md). This repository does not ship its own `lefthook.yml` or a Husky dependency.
 
 ---
 
-**Last Updated**: 2026-10-30
+**Last Updated**: 2026-11-03

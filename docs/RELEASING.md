@@ -1,3 +1,5 @@
+> **Note (3 Nov 2026).** Moved from the skill-local `.claude/instructions/` folder, which Claude Code does not read. The content is unchanged. Its tag and remote-branch deletion steps are an open review item (L-OBS-14 in the LS-4751 PRD); confirm before following them.
+
 # Release Process
 
 Step-by-step guide for releasing the linting skill.

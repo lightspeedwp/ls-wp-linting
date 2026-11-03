@@ -162,12 +162,12 @@ Update `package.json` scripts:
     "build": "wp-scripts build",
     "start": "wp-scripts start",
     "lint:js": "wp-scripts lint-js",
-    "format:js": "wp-scripts format-js",
+    "format:js": "wp-scripts format",
     "lint:md": "markdownlint-cli2 '**/*.md'",
     "lint:md:fix": "markdownlint-cli2 --fix '**/*.md'",
     "lint": "npm run lint:js && npm run lint:md",
     "format": "npm run format:js && npm run lint:md:fix",
-    "test": "jest --coverage"
+    "test": "wp-scripts test-unit-js --coverage"
   }
 }
 ```

@@ -1,9 +1,4 @@
----
-name: php-linting
-description: Expert in PHP linting and static analysis with PHPStan for WordPress plugins and themes. Debug PHP errors, configure PHPStan analysis levels, resolve type checking issues, and integrate PHP linting into CI/CD pipelines. Use this when the user mentions PHP errors, undefined methods, "Call to undefined method", type errors, PHPStan errors, "Method signature mismatch", "Property is undefined", WordPress PHP standards, WordPress coding standards, "wp_kses_post", "get_post", "register_block_type", PHP type hints, or asks "why is this PHP invalid?" or "how do I fix this PHP error?" Also use for PHP static analysis, WordPress function validation, WordPress plugin PHP issues, WordPress theme PHP issues, PHP type checking, PHPCS standards, or WordPress PHP best practices — even if they don't explicitly name a validation tool. Trigger on any PHP-related error, WordPress hook question, or PHP code review request.
----
-
-# PHP Linting Skill
+# PHP linting
 
 Specialized expertise in PHP static analysis, type checking, and WordPress coding standards for block themes and plugins.
 

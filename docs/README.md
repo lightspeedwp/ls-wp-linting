@@ -23,11 +23,11 @@ Quick navigation guide for the linting skill documentation.
 3. Check [WORDPRESS.md — Common Issues](WORDPRESS.md#common-issues) if WordPress-specific
 
 ### I want to understand a specific tool in detail
-- **ESLint & Prettier** → [CONFIGURATION.md — JavaScript/TypeScript](CONFIGURATION.md#javascripttypescript), use `/javascript-linting` sub-skill for deep focus
-- **markdownlint** → [CONFIGURATION.md — Markdown](CONFIGURATION.md#markdown), use `/markdown-linting` sub-skill
-- **YAML/JSON (GitHub Actions)** → [CONFIGURATION.md — YAML/JSON](CONFIGURATION.md#yamljson), use `/yaml-linting` or `/json-linting` sub-skills
-- **PHPStan (PHP)** → [CONFIGURATION.md — PHP](CONFIGURATION.md#php), use `/php-linting` sub-skill
-- **package.json** → [CONFIGURATION.md — Package Management](CONFIGURATION.md#package-management), use `/npm-linting` sub-skill
+- **ESLint & Prettier** → [CONFIGURATION.md — JavaScript/TypeScript](CONFIGURATION.md#javascripttypescript), deep focus in [references/javascript-typescript.md](../references/javascript-typescript.md)
+- **markdownlint** → [CONFIGURATION.md — Markdown](CONFIGURATION.md#markdown), deep focus in [references/markdown.md](../references/markdown.md)
+- **YAML/JSON (GitHub Actions)** → [CONFIGURATION.md — YAML/JSON](CONFIGURATION.md#yamljson), deep focus in [references/yaml-github-actions.md](../references/yaml-github-actions.md) and [references/json.md](../references/json.md)
+- **PHPStan (PHP)** → [CONFIGURATION.md — PHP](CONFIGURATION.md#php), deep focus in [references/php.md](../references/php.md)
+- **package.json** → [CONFIGURATION.md — Package Management](CONFIGURATION.md#package-management), deep focus in [references/npm.md](../references/npm.md)
 
 ### I'm setting up GitHub Actions CI
 1. Read [CI-CD.md — Quick Start](CI-CD.md#quick-start) for immediate setup
@@ -52,23 +52,26 @@ Quick navigation guide for the linting skill documentation.
 | **BUILD_SUMMARY.md** | ~200 lines | Project overview | Features, structure, testing, deployment status |
 | **DEPLOYMENT_READY.md** | ~250 lines | Release readiness | Deployment checklist, verification steps, go-live guide |
 
-## When to Use Sub-Skills
+## Focused reference files
 
-Sub-skills provide deeper, focused expertise on single tools. Use them when you need specialist guidance:
+`SKILL.md` routes each task to one of these, so Claude reads only what the task needs:
 
-- **`/javascript-linting`** — ESLint & Prettier deep dives (not just quick config)
-- **`/markdown-linting`** — markdownlint rule details and GitHub rules
-- **`/yaml-linting`** — GitHub Actions workflow validation
-- **`/json-linting`** — JSON schema and validation
-- **`/npm-linting`** — package.json and npm dependencies
-- **`/php-linting`** — PHPStan configuration and WordPress PHP standards
+| File | Covers |
+| --- | --- |
+| [javascript-typescript.md](../references/javascript-typescript.md) | ESLint, Prettier, TypeScript, flat config |
+| [css-scss.md](../references/css-scss.md) | stylelint and `@wordpress/stylelint-config` |
+| [markdown.md](../references/markdown.md) | markdownlint and `wp-scripts lint-md-docs` |
+| [theme-json-block-json.md](../references/theme-json-block-json.md) | `theme.json` and `block.json` schema validation |
+| [json.md](../references/json.md) | JSON syntax and schemas |
+| [npm.md](../references/npm.md) | `package.json` and dependencies |
+| [php.md](../references/php.md) | PHPStan, PHPCS, WordPress Coding Standards |
+| [yaml-github-actions.md](../references/yaml-github-actions.md) | GitHub Actions and YAML |
+| [lefthook-pre-commit.md](../references/lefthook-pre-commit.md) | Lefthook pre-commit and pre-push hooks |
 
-Use the main `/linting` skill for:
-- Multi-tool linting questions (ESLint + Prettier together)
-- WordPress-specific setup (block themes + plugins)
-- Troubleshooting across tools
-- General linting help
+These used to be separate sub-skills in `sub-skills/`. Claude Code does not load nested skills, so they are now reference files linked from `SKILL.md`.
+
+`BUILD_SUMMARY.md`, `DEPLOYMENT_READY.md` and `IMPLEMENTATION_SEQUENCE.md` are historical records of an earlier plan. `RELEASING.md` is the release process moved here from `.claude/instructions/`.
 
 ---
 
-**Last Updated**: 2026-10-30
+**Last Updated**: 2026-11-03

@@ -1,3 +1,5 @@
+> **Note (3 Nov 2026).** This guide describes a Lefthook setup that this repository does not ship (there is no `lefthook.yml` here, and the Jest and BATS hooks it mentions were never added). For current Lefthook guidance for WordPress projects, see [references/lefthook-pre-commit.md](../references/lefthook-pre-commit.md).
+
 # Lefthook Configuration Guide
 
 This skill includes a comprehensive **lefthook** configuration that enforces linting and testing standards before commits and pushes.

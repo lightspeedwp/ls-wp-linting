@@ -100,13 +100,14 @@ jobs:
       
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '24'
           cache: 'npm'
       
       - run: npm ci
       
-      - name: Run Jest Tests
-        run: npm run test:unit:js -- --coverage
+      # wp-scripts test-unit-js runs Vitest from @wordpress/scripts 36 onwards.
+      - name: Run unit tests
+        run: npm run test:unit -- --coverage
       
       - name: Upload Coverage
         uses: codecov/codecov-action@v3
