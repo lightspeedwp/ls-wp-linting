@@ -20,7 +20,7 @@ This directory holds (or references) external documentation that supports the li
   - Complete guide to block theme development
   - theme.json structure and configuration
 
-- **[WordPress Plugin Handbook - Blocks](https://developer.wordpress.org/plugins/blocks/)**
+- **[WordPress Plugin Handbook - Blocks](https://developer.wordpress.org/block-editor/)**
   - Block plugin development guide
   - Block registration and rendering
 

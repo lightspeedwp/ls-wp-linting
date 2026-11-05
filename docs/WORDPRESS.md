@@ -535,7 +535,7 @@ When linting fails in your block theme or plugin:
 - [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
 - [wp-scripts Documentation](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/)
 - [Block Themes Handbook](https://developer.wordpress.org/themes/block-themes/)
-- [Plugin Handbook - Blocks](https://developer.wordpress.org/plugins/blocks/)
+- [Plugin Handbook - Blocks](https://developer.wordpress.org/block-editor/)
 
 ---
 
