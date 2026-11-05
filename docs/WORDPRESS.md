@@ -17,10 +17,11 @@ Complete linting setup and best practices for WordPress block themes and plugins
 ### What is wp-scripts?
 
 `@wordpress/scripts` is the WordPress standard build tool for block themes. It includes:
+
 - **ESLint** with WordPress coding standards
 - **Prettier** for code formatting
 - **Webpack** for bundling
-- **Testing infrastructure** (Jest, @testing-library)
+- **Testing infrastructure** (`wp-scripts test-unit-js`, which runs Vitest from @wordpress/scripts 36)
 
 ### Installation
 
@@ -60,6 +61,7 @@ wp-scripts provides a default ESLint config. Customize by creating `.eslintrc.js
 ```
 
 **Key WordPress Rules:**
+
 - `camelcase` with `properties: never` - WordPress uses snake_case for properties
 - `ignoreDestructuring: true` - Allow destructuring even if vars are snake_case
 - `no-console` as warning - WordPress outputs warnings, not errors
@@ -134,6 +136,7 @@ my-block-theme/
 ```
 
 **Validation:**
+
 - Use VSCode with JSON schema extension
 - Test with `wp-scripts build` (fails on invalid theme.json)
 - Check schema at [schemas.wp.org](https://schemas.wp.org/wp/6.3/theme.json)
@@ -243,6 +246,7 @@ Each block needs a `block.json` descriptor:
 ```
 
 **Validation:**
+
 - Test with `wp-scripts build` (fails on invalid block.json)
 - Check schema at [developer.wordpress.org](https://developer.wordpress.org/block-editor/)
 - VSCode JSON schema extension recommended
@@ -294,7 +298,7 @@ Create `.eslintrc.json` (extends wp-scripts):
 1. **Validate block.json** - Test with `wp-scripts build`
 2. **Use block namespacing** - `namespace/block-name` format
 3. **Register blocks properly** - Include required metadata
-4. **Test block rendering** - Use Jest tests for edit/save
+4. **Test block rendering** - Use Vitest unit tests for edit/save
 5. **Use WordPress hooks** - `wp_enqueue_scripts`, `enqueue_block_assets`
 6. **Version your plugin** - Update version in plugin.php and package.json
 7. **Internationalize strings** - Use `__()` and `_e()` for translations
@@ -307,6 +311,7 @@ Create `.eslintrc.json` (extends wp-scripts):
 ### JavaScript/ESLint Standards
 
 **Variable Naming:**
+
 ```javascript
 // ✓ Good - camelCase for variables
 const blockSettings = {
@@ -322,6 +327,7 @@ const myVARiable = '';
 ```
 
 **No console in production:**
+
 ```javascript
 // ✓ Good - console only in development
 if ( process.env.NODE_ENV === 'development' ) {
@@ -333,6 +339,7 @@ console.log( 'This will ship' );
 ```
 
 **Use const, not var:**
+
 ```javascript
 // ✓ Good
 const settings = {};
@@ -344,6 +351,7 @@ var count = 0;
 ```
 
 **Always use semicolons:**
+
 ```javascript
 // ✓ Good
 const name = 'My Block';
@@ -412,6 +420,7 @@ Continue logically.
 **Problem:** theme.json looks correct but `wp-scripts build` fails
 
 **Solutions:**
+
 1. Validate JSON syntax: `node -e "JSON.parse(require('fs').readFileSync('theme.json'))"`
 2. Check schema version matches: `"$schema": "https://schemas.wp.org/wp/6.3/theme.json"`
 3. Test with simpler config first, add complexity gradually
@@ -422,6 +431,7 @@ Continue logically.
 **Problem:** Block not registering, "block.json not found" error
 
 **Solutions:**
+
 1. Verify `block.json` path: should be in block folder (e.g., `src/blocks/my-block/block.json`)
 2. Check spelling: `block.json` (not `blocks.json` or `Block.json`)
 3. Ensure valid JSON: `node -e "JSON.parse(require('fs').readFileSync('src/blocks/my-block/block.json'))"`
@@ -449,6 +459,7 @@ Continue logically.
 ```
 
 This allows:
+
 ```javascript
 // ✓ Valid with proper rules
 const response = {
@@ -524,7 +535,7 @@ When linting fails in your block theme or plugin:
 - [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
 - [wp-scripts Documentation](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/)
 - [Block Themes Handbook](https://developer.wordpress.org/themes/block-themes/)
-- [Plugin Handbook - Blocks](https://developer.wordpress.org/plugins/blocks/)
+- [Plugin Handbook - Blocks](https://developer.wordpress.org/block-editor/)
 
 ---
 

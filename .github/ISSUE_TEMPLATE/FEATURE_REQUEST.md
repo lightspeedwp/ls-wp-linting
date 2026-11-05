@@ -47,7 +47,8 @@ If you have ideas about how to implement this:
 
 ## Related Sub-Skills
 
-Which sub-skill(s) would this affect?
+Which reference file(s) in `references/` would this affect?
+
 - [ ] javascript-linting (ESLint, Prettier)
 - [ ] markdown-linting
 - [ ] yaml-linting (GitHub Actions)

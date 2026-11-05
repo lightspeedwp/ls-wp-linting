@@ -1,3 +1,5 @@
+> **Note (3 Nov 2026).** Moved from the skill-local `.claude/instructions/` folder, which Claude Code does not read. The content is unchanged. Its tag and remote-branch deletion steps are an open review item (L-OBS-14 in the LS-4751 PRD); confirm before following them.
+
 # Release Process
 
 Step-by-step guide for releasing the linting skill.
@@ -59,6 +61,7 @@ Add new section at top:
 ### 4. Update README.md
 
 If version is referenced:
+
 ```bash
 # Update if needed
 sed -i '' 's/Version: .*/Version: 1.1.0/' README.md
@@ -97,6 +100,7 @@ gh pr create --title "Release: v1.1.0" \
 ```
 
 Wait for:
+
 - CI/CD to pass
 - Code review approval
 - All tests passing
@@ -131,7 +135,8 @@ gh release create v1.1.0 \
 ```
 
 Or manually:
-1. Go to https://github.com/lightspeedwp/linting/releases
+
+1. Go to <https://github.com/lightspeedwp/ls-wp-linting/releases>
 2. Click "Draft a new release"
 3. Tag version: `v1.1.0`
 4. Title: `v1.1.0`
@@ -141,6 +146,7 @@ Or manually:
 ## Post-Release
 
 ### Verify Release
+
 ```bash
 # Check GitHub release
 gh release view v1.1.0
@@ -169,16 +175,18 @@ git push -u origin develop/v1.2.0-dev
 
 Post in Slack/Teams:
 > 🎉 **v1.1.0 Released**
-> 
+>
 > New features:
+>
 > - Feature 1
 > - Feature 2
 >
-> See https://github.com/lightspeedwp/linting/releases/tag/v1.1.0
+> See <https://github.com/lightspeedwp/ls-wp-linting/releases>
 
 ## Troubleshooting
 
 ### Failed Release
+
 If something goes wrong:
 
 ```bash
@@ -196,6 +204,7 @@ git pull origin main
 ```
 
 ### Hotfix Release
+
 For urgent fixes:
 
 ```bash

@@ -35,6 +35,7 @@ What actually happens.
 ## Tool Information
 
 Which linting tool is affected?
+
 - [ ] ESLint
 - [ ] Prettier
 - [ ] markdownlint

@@ -13,12 +13,14 @@ Use this prompt to set up complete linting infrastructure for a new or existing 
 ### 1. Verify Project Type
 
 **Block Theme** has:
+
 - `style.css` with `Template` header (or no Template)
 - `functions.php`
 - `theme.json`
 - Often uses `@wordpress/scripts`
 
 **Block Plugin** has:
+
 - `plugin.php` header file
 - `src/` directory for blocks
 - `package.json` with `@wordpress/scripts`
@@ -162,12 +164,12 @@ Update `package.json` scripts:
     "build": "wp-scripts build",
     "start": "wp-scripts start",
     "lint:js": "wp-scripts lint-js",
-    "format:js": "wp-scripts format-js",
+    "format:js": "wp-scripts format",
     "lint:md": "markdownlint-cli2 '**/*.md'",
     "lint:md:fix": "markdownlint-cli2 --fix '**/*.md'",
     "lint": "npm run lint:js && npm run lint:md",
     "format": "npm run format:js && npm run lint:md:fix",
-    "test": "jest --coverage"
+    "test": "wp-scripts test-unit-js --coverage"
   }
 }
 ```

@@ -1,9 +1,4 @@
----
-name: json-linting
-description: Expert in JSON and JSON5 file linting and validation. Debug JSON syntax errors, validate package.json structure, fix formatting issues, and ensure schema compliance. Use this whenever the user mentions JSON files, JSON syntax errors, "unexpected token", "invalid JSON", package.json errors, JSON schema validation, JSON parsing failures, "malformed JSON", JSON structure issues, JSON format problems, or asks "why is this JSON invalid?" or "how do I fix this JSON error?" Also use for Prettier JSON formatting, JSON prettification, JSON linting, JSON structure validation, theme.json errors, block.json problems, or any JSON validator errors — even if they don't explicitly name a linting tool. Trigger on any JSON-related question or error message.
----
-
-# JSON Linting Skill
+# JSON linting
 
 Specialized expertise in JSON file validation, JSON5 support, and schema-based validation for WordPress projects.
 
@@ -26,6 +21,7 @@ When users encounter "Unexpected token" or parsing errors:
 4. **Verify formatting** - Run through Prettier to ensure consistent style
 
 **Common causes**:
+
 - Missing commas between properties
 - Trailing commas in objects/arrays (not allowed in JSON)
 - Unescaped quotes or newlines in strings
@@ -66,7 +62,9 @@ When JSON files must match a specific schema (like theme.json or block.json):
 ## Quick Reference
 
 ### "Expected comma" Error
+
 → Check line before error for missing comma after property value
+
 ```json
 {
   "name": "my-project"  // ← Missing comma here
@@ -75,7 +73,9 @@ When JSON files must match a specific schema (like theme.json or block.json):
 ```
 
 ### "Unexpected token }" Error
+
 → Usually a trailing comma before closing brace
+
 ```json
 {
   "name": "my-project",  // ← Trailing comma not allowed in JSON
@@ -83,7 +83,9 @@ When JSON files must match a specific schema (like theme.json or block.json):
 ```
 
 ### "Unexpected end of JSON input" Error
+
 → Missing closing brace or bracket
+
 ```json
 {
   "name": "my-project",
@@ -92,6 +94,7 @@ When JSON files must match a specific schema (like theme.json or block.json):
 ```
 
 ### Validate JSON Without Errors
+
 ```bash
 # Test JSON syntax
 node -e "JSON.parse(require('fs').readFileSync('package.json'))"
@@ -109,6 +112,7 @@ For WordPress block themes and plugins:
 - **package.json** - Must include `wp-scripts` or `wp-build` dependencies for linting integration
 
 Test WordPress JSON files with:
+
 ```bash
 npm run build    # WordPress tools validate JSON during build
 ```

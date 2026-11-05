@@ -46,6 +46,7 @@ jobs:
 ```
 
 This ensures:
+
 - ✅ JavaScript/TypeScript linting passes
 - ✅ Code formatting matches Prettier rules
 - ✅ Markdown is properly formatted
@@ -100,13 +101,14 @@ jobs:
       
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '24'
           cache: 'npm'
       
       - run: npm ci
       
-      - name: Run Jest Tests
-        run: npm run test:unit:js -- --coverage
+      # wp-scripts test-unit-js runs Vitest from @wordpress/scripts 36 onwards.
+      - name: Run unit tests
+        run: npm run test:unit -- --coverage
       
       - name: Upload Coverage
         uses: codecov/codecov-action@v3
@@ -499,6 +501,7 @@ test:
 **Problem:** Dependencies downloaded every run despite caching
 
 **Solutions:**
+
 1. Check lock file committed: `git status package-lock.json`
 2. Verify cache path: should be `npm` not `node_modules`
 3. Clear cache: Settings → Actions → Clear cache
@@ -509,6 +512,7 @@ test:
 **Problem:** Job times out (default 6 hours)
 
 **Solutions:**
+
 ```yaml
 jobs:
   test:
@@ -521,6 +525,7 @@ jobs:
 **Problem:** Local PHP 8.0 but CI uses different version
 
 **Solution:**
+
 ```yaml
 - uses: shivammathur/setup-php@v2
   with:
@@ -533,6 +538,7 @@ jobs:
 **Problem:** Codecov action fails silently
 
 **Debug:**
+
 ```yaml
 - name: Upload Coverage
   uses: codecov/codecov-action@v3
@@ -544,12 +550,14 @@ jobs:
 ### Linting Passes Locally but Fails in CI
 
 **Causes:**
+
 1. Different Node versions
 2. Different npm versions
 3. Cache not updated
 4. Line ending differences (Windows vs Linux)
 
 **Solutions:**
+
 ```yaml
 # Force consistent environment
 - uses: actions/setup-node@v4
@@ -575,6 +583,7 @@ jobs:
 See `.github/workflows/` in this repository for complete, working examples.
 
 **Files included:**
+
 - `lint.yml` - JavaScript linting
 - `test.yml` - Unit and E2E tests
 - `php.yml` - PHP linting (if applicable)

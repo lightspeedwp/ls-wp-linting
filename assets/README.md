@@ -11,6 +11,7 @@ This directory holds ready-to-use templates and example configuration files that
 ### Configuration Templates
 
 Example configuration files for common linting tools:
+
 - ESLint config templates (`.eslintrc.js`, `.eslintrc.json`)
 - Prettier config templates (`.prettierrc`, `.prettierrc.json`)
 - PHPStan config (`phpstan.neon`)
@@ -20,6 +21,7 @@ Example configuration files for common linting tools:
 ### WordPress-Specific Examples
 
 Pre-built configurations optimized for WordPress block themes and plugins:
+
 - `wp-scripts` ESLint + Prettier setup
 - WordPress PHP coding standards
 - Block theme linting patterns
@@ -28,6 +30,7 @@ Pre-built configurations optimized for WordPress block themes and plugins:
 ### Helper Scripts
 
 Utility scripts that support linting workflows:
+
 - Config validation helpers
 - Setup automation scripts
 - CI/CD integration examples
@@ -43,6 +46,7 @@ When the skill suggests a configuration, it may reference templates from this di
 ## Adding New Assets
 
 When adding new configuration templates or examples:
+
 - Place them in this directory
 - Name clearly with the tool/purpose (e.g., `eslintrc.wordpress-blocks.json`)
 - Document in this README under the appropriate section

@@ -1,6 +1,6 @@
 export default [
   {
-    ignores: ['node_modules', '.git', 'dist', 'build', 'sub-skills'],
+    ignores: ['node_modules', '.git', 'dist', 'build', 'coverage'],
   },
   {
     files: ['**/*.js', '**/*.mjs', '**/*.cjs'],

@@ -9,6 +9,7 @@ Solutions to common linting problems in WordPress projects.
 **Symptoms**: `ESLint config file not found` or linting skipped entirely
 
 **Solutions**:
+
 1. Create `eslint.config.cjs` (modern) or `.eslintrc.json` (legacy)
 2. Verify file is in project root
 3. Check file name spelling (case-sensitive)
@@ -19,6 +20,7 @@ Solutions to common linting problems in WordPress projects.
 **Symptoms**: `Warning: Rule X is deprecated`
 
 **Solutions**:
+
 1. Update ESLint: `npm install --save-dev eslint@latest`
 2. Update rule plugins: `npm update`
 3. Replace deprecated rule in config:
@@ -31,6 +33,7 @@ Solutions to common linting problems in WordPress projects.
 **Symptoms**: ESLint runs but finds no files
 
 **Solutions**:
+
 ```bash
 # Test the pattern first
 ls src/**/*.js
@@ -48,6 +51,7 @@ ls src/**/*.js
 **Symptoms**: ESLint can't parse file
 
 **Solutions**:
+
 ```bash
 npm install --save-dev @babel/eslint-parser
 
@@ -61,21 +65,25 @@ languageOptions: {
 
 ### Error: Conflicting ESLint and Prettier rules
 
-**Symptoms**: 
+**Symptoms**:
+
 - ESLint says add semicolon, Prettier removes it
 - ESLint wants different spacing than Prettier
 
 **Solutions**:
+
 1. Install `eslint-config-prettier`: `npm install --save-dev eslint-config-prettier`
 2. Load it LAST in config:
-```javascript
-// eslint.config.cjs
-const prettier = require('eslint-config-prettier');
-module.exports = [
-  /* other configs */
-  prettier  // MUST be last
-];
-```
+
+   ```javascript
+   // eslint.config.cjs
+   const prettier = require('eslint-config-prettier');
+   module.exports = [
+     /* other configs */
+     prettier  // MUST be last
+   ];
+   ```
+
 3. Never use ESLint for formatting (indent, semi, quotes, etc.)
 4. Run Prettier separately or via VSCode
 
@@ -84,17 +92,22 @@ module.exports = [
 **Symptoms**: File exists but ESLint skips it
 
 **Solutions**:
+
 1. Check `.eslintignore`:
-```bash
-# Remove matching files
-cat .eslintignore | grep myfile.js
-```
+
+   ```bash
+   # Remove matching files
+   cat .eslintignore | grep myfile.js
+   ```
+
 2. Check config `files` pattern:
-```javascript
-{ files: ['**/*.js'], rules: {...} }  // Only matches .js
-// If you want .jsx too:
-{ files: ['**/*.{js,jsx}'], rules: {...} }
-```
+
+   ```javascript
+   { files: ['**/*.js'], rules: {...} }  // Only matches .js
+   // If you want .jsx too:
+   { files: ['**/*.{js,jsx}'], rules: {...} }
+   ```
+
 3. Run with debug: `npx eslint --debug myfile.js 2>&1 | head -20`
 
 ## Prettier Issues
@@ -104,16 +117,19 @@ cat .eslintignore | grep myfile.js
 **Symptoms**: Prettier doesn't format, says no config
 
 **Solutions**:
+
 1. Create `.prettierrc` or `prettier.config.js`
 2. Or add to `package.json`:
-```json
-{
-  "prettier": {
-    "singleQuote": true,
-    "semi": true
-  }
-}
-```
+
+   ```json
+   {
+     "prettier": {
+       "singleQuote": true,
+       "semi": true
+     }
+   }
+   ```
+
 3. Verify default prettier behavior: `npx prettier --version && npx prettier --help`
 
 ### Files not formatted
@@ -121,6 +137,7 @@ cat .eslintignore | grep myfile.js
 **Symptoms**: Run `npm run format` but files unchanged
 
 **Solutions**:
+
 ```bash
 # Check if files need formatting
 npx prettier --check . --list-different
@@ -137,6 +154,7 @@ npx prettier --write .
 **Symptoms**: Format, ESLint fails; lint, Prettier reformats
 
 **Solutions**:
+
 1. Use `eslint-config-prettier` (see above)
 2. Never use ESLint rules for formatting:
    - ❌ `indent`, `semi`, `quotes`, `comma-dangle`, `space-before-function-paren`
@@ -149,6 +167,7 @@ npx prettier --write .
 **Symptoms**: `printWidth: 80` in Prettier, ESLint uses different
 
 **Solutions**:
+
 ```json
 // .prettierrc
 { "printWidth": 80 }
@@ -165,6 +184,7 @@ npx prettier --write .
 **Symptoms**: Markdown linting skipped or using defaults
 
 **Solutions**:
+
 1. Create `.markdownlint-cli2.mjs` or `.markdownlint.json`
 2. Check file location: must be in project root
 3. Test explicitly: `markdownlint-cli2 --config .markdownlint-cli2.mjs README.md`
@@ -174,6 +194,7 @@ npx prettier --write .
 **Symptoms**: `MD001 heading-increment: Top-level heading must be H1`
 
 **Solutions**:
+
 ```markdown
 # Wrong - starts with H2
 ## Section
@@ -188,22 +209,27 @@ npx prettier --write .
 **Symptoms**: `MD013 line-length: Line too long`
 
 **Solutions**:
+
 1. Wrap long lines
 2. Or disable rule per line:
-```markdown
-<!-- markdownlint-disable-next-line MD013 -->
-This is a very long line that exceeds the configured printWidth limit
-```
+
+   ```markdown
+   <!-- markdownlint-disable-next-line MD013 -->
+   This is a very long line that exceeds the configured printWidth limit
+   ```
+
 3. Or set in config:
-```json
-{ "rules": { "MD013": { "line_length": 120 } } }
-```
+
+   ```json
+   { "rules": { "MD013": { "line_length": 120 } } }
+   ```
 
 ### Ignore file not working
 
 **Symptoms**: Files in `.markdownlintignore` still lint
 
 **Solutions**:
+
 ```bash
 # Check if pattern works
 markdownlint-cli2 --list-files | grep ignored-file
@@ -220,6 +246,7 @@ markdownlint-cli2 --list-files | grep ignored-file
 **Symptoms**: `MD000 parse error` at top of file
 
 **Solutions**:
+
 ```markdown
 ---
 title: "My Document"
@@ -230,6 +257,7 @@ date: 2026-10-30
 ```
 
 Ensure:
+
 - 3 dashes above and below
 - Valid YAML inside
 - Blank line after closing dashes
@@ -241,6 +269,7 @@ Ensure:
 **Symptoms**: PHPStan says no config
 
 **Solutions**:
+
 1. Create `phpstan.neon` in project root
 2. Check spelling: `phpstan.neon` not `phpstan.yml` or `phpstan.json`
 3. Test: `vendor/bin/phpstan analyse --debug`
@@ -250,13 +279,16 @@ Ensure:
 **Symptoms**: PHPStan reports method doesn't exist (but it does)
 
 **Solutions**:
+
 1. This is often correct - method may be dynamic in WordPress
 2. Exclude pattern:
-```neon
-ignoreErrors:
-  - '#Call to an undefined method#'
-  - '#Undefined property#'
-```
+
+   ```neon
+   ignoreErrors:
+     - '#Call to an undefined method#'
+     - '#Undefined property#'
+   ```
+
 3. Add stubs for dynamic methods (plugin ecosystem)
 
 ### Performance: Analysis too slow
@@ -264,22 +296,28 @@ ignoreErrors:
 **Symptoms**: `phpstan analyse` takes > 30 seconds
 
 **Solutions**:
+
 1. Lower analysis level (default 5):
-```neon
-parameters:
-  level: 3  # Lower level = faster
-```
+
+   ```neon
+   parameters:
+     level: 3  # Lower level = faster
+   ```
+
 2. Exclude more paths:
-```neon
-excludePaths:
-  - tests
-  - vendor
-  - node_modules
-```
+
+   ```neon
+   excludePaths:
+     - tests
+     - vendor
+     - node_modules
+   ```
+
 3. Use `--memory-limit`:
-```bash
-vendor/bin/phpstan analyse --memory-limit=4G
-```
+
+   ```bash
+   vendor/bin/phpstan analyse --memory-limit=4G
+   ```
 
 ## GitHub Actions CI Issues
 
@@ -288,6 +326,7 @@ vendor/bin/phpstan analyse --memory-limit=4G
 **Symptoms**: GitHub Actions workflow fails at setup step
 
 **Solutions**:
+
 ```yaml
 - uses: actions/setup-node@v4
   with:
@@ -301,25 +340,32 @@ vendor/bin/phpstan analyse --memory-limit=4G
 **Symptoms**: `npm run lint` works on machine, fails in GitHub Actions
 
 **Solutions**:
-1. Check Node version:
-```bash
-# Locally
-node --version
 
-# In CI
-echo "Node: ${{ matrix.node-version }}"
-```
+1. Check Node version:
+
+   ```bash
+   # Locally
+   node --version
+
+   # In CI
+   echo "Node: ${{ matrix.node-version }}"
+   ```
+
 2. Check cache:
-```yaml
-- uses: actions/setup-node@v4
-  with:
-    cache: 'npm'
-    cache-dependency-path: '**/package-lock.json'  # If monorepo
-```
+
+   ```yaml
+   - uses: actions/setup-node@v4
+     with:
+       cache: 'npm'
+       cache-dependency-path: '**/package-lock.json'  # If monorepo
+   ```
+
 3. Clean dependencies:
-```yaml
-- run: npm ci  # Use ci instead of install
-```
+
+   ```yaml
+   - run: npm ci  # Use ci instead of install
+   ```
+
 4. Check `.gitignore` doesn't exclude config files
 
 ### Error: "eslintignore not honored"
@@ -327,21 +373,25 @@ echo "Node: ${{ matrix.node-version }}"
 **Symptoms**: CI lints files that are in `.eslintignore`
 
 **Solutions**:
+
 1. Verify `.eslintignore` is committed: `git status .eslintignore`
 2. Use absolute paths in CI:
-```yaml
-- run: npm run lint -- --ignore-path ./.eslintignore
-```
+
+   ```yaml
+   - run: npm run lint -- --ignore-path ./.eslintignore
+   ```
+
 3. Or use config directly:
-```javascript
-// eslint.config.cjs
-module.exports = [
-  {
-    ignores: ['node_modules/', 'dist/']
-  },
-  // ... rules
-];
-```
+
+   ```javascript
+   // eslint.config.cjs
+   module.exports = [
+     {
+       ignores: ['node_modules/', 'dist/']
+     },
+     // ... rules
+   ];
+   ```
 
 ## wp-scripts/WordPress Issues
 
@@ -350,6 +400,7 @@ module.exports = [
 **Symptoms**: `wp-scripts: command not found`
 
 **Solutions**:
+
 ```bash
 # Install as dev dependency
 npm install --save-dev @wordpress/scripts
@@ -363,6 +414,7 @@ npx @wordpress/scripts lint-js
 **Symptoms**: wp-scripts config not loading WordPress rules
 
 **Solutions**:
+
 ```javascript
 // .eslintrc.json - wp-scripts uses this
 {
@@ -374,6 +426,7 @@ npx @wordpress/scripts lint-js
 ```
 
 Not working? Override completely:
+
 ```javascript
 // eslint.config.cjs - modern flat config
 module.exports = [
@@ -392,6 +445,7 @@ module.exports = [
 **Symptoms**: PHPStan reports undefined methods (WordPress dynamic)
 
 **Solutions**:
+
 ```neon
 # phpstan.neon
 parameters:
@@ -405,6 +459,7 @@ parameters:
 ```
 
 Or use WordPress stubs (if available):
+
 ```bash
 composer require phpstan/phpstan-wordpress --dev
 ```

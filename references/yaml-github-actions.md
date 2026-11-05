@@ -1,9 +1,4 @@
----
-name: yaml-linting
-description: Expert in YAML and JSON linting using Spectral and actionlint for GitHub Actions workflows. Debug GitHub Actions workflow validation, fix YAML syntax errors, configure JSON/YAML rules, and troubleshoot CI/CD pipeline issues. Use this when the user mentions GitHub Actions errors, workflow validation, YAML syntax problems, "Invalid character", "Field is not defined", "Unknown action", CI/CD failures, ".github/workflows", GitHub workflow syntax, actionlint errors, workflow indentation issues, or asks "why is my workflow failing?" or "how do I fix this GitHub Actions error?" Also use for workflow step errors, action parameter issues, GitHub Actions configuration, workflow caching, GitHub Actions secrets, status checks, branch protection rules, or CI/CD pipeline debugging — even if they don't explicitly name a validation tool. Trigger on any GitHub Actions question, workflow error, or CI/CD pipeline issue.
----
-
-# YAML Linting Skill
+# YAML linting
 
 Specialized expertise in YAML/JSON linting, GitHub Actions workflow validation, and CI/CD configuration for WordPress development.
 
@@ -27,6 +22,7 @@ When workflows fail or GitHub shows validation errors:
 5. **Test locally** - Run actionlint before pushing
 
 **Common issues**:
+
 - Missing required fields (name, jobs, runs-on)
 - Incorrect indentation (YAML is whitespace-sensitive)
 - Wrong action names or parameters
@@ -58,6 +54,7 @@ steps:
 ```
 
 **Common causes**:
+
 - Mixing tabs and spaces (use spaces only)
 - Incorrect nesting depth
 - Missing colons after keys
@@ -96,9 +93,11 @@ Ensure workflow steps have correct parameters:
 ## Quick Reference
 
 ### "Field is not defined" Error
+
 → Missing required field in workflow or step
 
 **Fix**:
+
 ```yaml
 # Bad: missing 'runs-on'
 jobs:
@@ -116,9 +115,11 @@ jobs:
 ```
 
 ### "Invalid character" Error
+
 → YAML syntax issue (usually indentation or colon)
 
 **Fix**:
+
 ```yaml
 # Bad: tabs instead of spaces
 jobs:
@@ -132,9 +133,11 @@ jobs:
 ```
 
 ### "Unknown action" Error
+
 → Action doesn't exist or wrong version
 
 **Fix**:
+
 ```bash
 # Verify action exists on GitHub Marketplace
 # Format: owner/repo@ref (e.g., actions/checkout@v4)
@@ -150,9 +153,11 @@ jobs:
 ```
 
 ### "Cache path not found" Warning
+
 → Cache path doesn't exist or is empty
 
 **Fix**:
+
 ```yaml
 # Make sure cache path exists before caching
 - uses: actions/setup-node@v4

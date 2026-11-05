@@ -1,117 +1,57 @@
 ---
 name: linting
-description: Complete linting and code quality guidance for WordPress themes and plugins using ESLint, Prettier, PHPStan, markdownlint, and GitHub Actions workflows. Supports block themes (wp-scripts), block plugins (wp-build), and full WordPress development stacks. Includes 6 specialized sub-skills for JavaScript, Markdown, YAML, JSON, npm, and PHP linting. Use this skill whenever the user mentions linting, static analysis, code quality, WordPress standards, or any linting error from validation tools — even if they don't explicitly ask for help with linting or name a specific tool.
+description: Linting and code quality guidance for WordPress block themes and plugins - ESLint and Prettier (JavaScript and TypeScript), stylelint (CSS and SCSS), markdownlint, PHPStan and PHPCS, JSON, package.json, theme.json and block.json schemas, GitHub Actions YAML, and Lefthook pre-commit hooks, through @wordpress/scripts or configured directly. Use this skill whenever the user mentions linting, static analysis, code quality, WordPress coding standards, formatting, pre-commit hooks, or any error from a linter or validator, even if they don't name a specific tool.
 ---
 
-# Linting Skill for WordPress Development
+# Linting for WordPress development
 
-Expert guidance for debugging and configuring linters across WordPress block themes, plugins, and full stacks.
+Debug, configure and automate linters for WordPress block themes, block plugins and full sites.
 
-## Purpose
+## How to work
 
-This skill provides comprehensive support for:
-- **Debugging linting configurations** — Resolving conflicts, fixing syntax errors, and optimizing rules
-- **WordPress-specific setup** — Block themes (wp-scripts) and block plugins (wp-build)
-- **Multi-tool coordination** — ESLint, Prettier, markdownlint, PHPStan, YAML validation, JSON validation
-- **CI/CD integration** — GitHub Actions workflow validation and linting pipeline setup
-- **Troubleshooting** — 30+ common issues with solutions across all tools
+1. Find out what the project already uses before changing anything. Read `package.json` scripts, the config files in the table below, `composer.json` and `.github/workflows/`.
+2. Prefer `@wordpress/scripts` (`wp-scripts lint-js`, `lint-style`, `lint-md-docs`, `lint-pkg-json`, `format`) in WordPress projects. It carries the WordPress rule sets and ignores `build`, `node_modules` and `vendor`.
+3. Read the reference file for the tool involved (see "What to read for each task") before answering in depth.
+4. Reproduce the error with the project's own command. Fix the cause rather than disabling the rule, and say when a rule is being turned off and why.
+5. Check that a CI workflow exists before saying a check runs in CI.
 
-## When to Use This Skill
+## What to read for each task
 
-✅ **Use the main skill when:**
-- Debugging conflicts between multiple linting tools (e.g., ESLint + Prettier)
-- Setting up linting for a new WordPress block theme or plugin
-- Troubleshooting linting errors across different tools
-- Configuring GitHub Actions CI/CD for linting
-- Asking general linting questions or best practices
+| Task | Read |
+| --- | --- |
+| ESLint, Prettier, TypeScript linting, flat config migration | [references/javascript-typescript.md](references/javascript-typescript.md) |
+| CSS and SCSS (stylelint, `@wordpress/stylelint-config`) | [references/css-scss.md](references/css-scss.md) |
+| Markdown (markdownlint, `lint-md-docs`) | [references/markdown.md](references/markdown.md) |
+| `theme.json`, style variations and `block.json` schema validation | [references/theme-json-block-json.md](references/theme-json-block-json.md) |
+| JSON syntax and JSON schema errors | [references/json.md](references/json.md) |
+| `package.json`, npm dependency and peer conflicts | [references/npm.md](references/npm.md) |
+| PHP: PHPStan levels, PHPCS and WordPress Coding Standards | [references/php.md](references/php.md) |
+| GitHub Actions workflows and YAML (actionlint, yamllint) | [references/yaml-github-actions.md](references/yaml-github-actions.md) |
+| Pre-commit and pre-push hooks with Lefthook | [references/lefthook-pre-commit.md](references/lefthook-pre-commit.md) |
+| Longer guides: setup patterns, CI caching, troubleshooting | [docs/README.md](docs/README.md) |
 
-✅ **Use sub-skills for deep focus on one tool:**
-- `/javascript-linting` — ESLint & Prettier deep dives
-- `/markdown-linting` — markdownlint rule details and GitHub rules
-- `/yaml-linting` — GitHub Actions workflow validation
-- `/json-linting` — JSON schema and validation
-- `/npm-linting` — package.json and npm dependencies
-- `/php-linting` — PHPStan configuration and WordPress PHP standards
+## Config files by tool
 
-## Supported Tools
+| Tool | Config files |
+| --- | --- |
+| ESLint | `eslint.config.{js,mjs,cjs}` (flat config); legacy `.eslintrc.*` is not read by ESLint 10 |
+| Prettier | `.prettierrc`, `.prettierrc.json`, `.prettierrc.yaml`, `prettier.config.js`; ignores in `.prettierignore` |
+| stylelint | `.stylelintrc.json`, `stylelint.config.js` |
+| markdownlint | `.markdownlint.json`, `.markdownlint.yaml`, `.markdownlint-cli2.jsonc`, `.markdownlint-cli2.mjs` |
+| PHPStan | `phpstan.neon`, `phpstan.neon.dist` |
+| PHPCS | `phpcs.xml`, `phpcs.xml.dist`, `.phpcs.xml.dist` |
+| npm-package-json-lint | `.npmpackagejsonlintrc.json` (used by `wp-scripts lint-pkg-json`) |
+| Lefthook | `lefthook.yml` |
+| Build tooling | `@wordpress/scripts` (themes and plugins), `@wordpress/build` (plugins) |
 
-| Tool | Purpose | Files |
-|------|---------|-------|
-| **ESLint** | JavaScript/TypeScript linting | `.eslintrc.js`, `.eslintrc.json` |
-| **Prettier** | Code formatting | `.prettierrc`, `.prettierrc.json` |
-| **markdownlint** | Markdown linting | `.markdownlint-cli2.mjs` |
-| **PHPStan** | PHP static analysis | `phpstan.neon` |
-| **Spectral** | JSON/YAML validation | `.spectral.config.cjs` |
-| **actionlint** | GitHub Actions validation | (built-in) |
-| **wp-scripts** | WordPress block theme build + linting | (extends ESLint, Prettier) |
-| **wp-build** | WordPress block plugin build + linting | (modular config) |
+## Quick fixes
 
-## Quick Start: Common Scenarios
+- **ESLint and Prettier fight:** let Prettier own formatting. With `wp-scripts` this is already set up; in a custom flat config, put `eslint-config-prettier` last.
+- **Rules ignored after upgrading to ESLint 10:** the project still has `.eslintrc.*`. Migrate to `eslint.config.mjs` with `...wordpress.configs.recommended`.
+- **`.ts` files not linted:** the config's `files` globs only match `.js`, or `typescript` isn't installed.
+- **stylelint `Unknown word` in SCSS:** use `@wordpress/stylelint-config/scss`.
+- **`theme.json` changes not taking effect:** validate it against `https://schemas.wp.org/trunk/theme.json` first; an unknown key is ignored silently.
 
-### ESLint + Prettier Conflict
-1. Check current config files (`.eslintrc.js`, `.prettierrc`)
-2. Verify `eslint-config-prettier` is installed
-3. Add prettier to ESLint config: `extends: ["prettier"]`
-4. Test: `npm run lint && npm run format`
+## This skill's own tooling
 
-### WordPress Block Theme Setup
-1. Install `@wordpress/scripts`: `npm install --save-dev @wordpress/scripts`
-2. Add scripts to `package.json`:
-   - `"lint:js": "wp-scripts lint-js"`
-   - `"format:js": "wp-scripts format-js"`
-   - `"lint:md": "wp-scripts lint-md"`
-3. Run: `npm run lint:js` to validate
-4. Configure CI with `.github/workflows/lint.yml`
-
-### GitHub Actions CI Linting
-1. Create `.github/workflows/lint.yml` workflow
-2. Run: `npm install`, `npm run lint`
-3. Validate YAML: `actionlint .github/workflows/`
-4. Add status checks to branch protection rules
-
-### PHPStan Setup
-1. Install: `composer require --dev phpstan/phpstan phpstan/phpstan-wordpress`
-2. Create `phpstan.neon`: set analysis level (5-6 for WordPress)
-3. Run: `vendor/bin/phpstan analyse`
-4. Add to CI pipeline
-
-## Documentation Structure
-
-See `docs/README.md` for complete navigation. Key guides:
-- **WORDPRESS.md** — Block theme & plugin setup patterns
-- **CONFIGURATION.md** — Tool reference & config examples
-- **CI-CD.md** — GitHub Actions workflows & caching
-- **TROUBLESHOOTING.md** — 30+ common issues & solutions
-- **LEFTHOOK.md** — Git hooks automation
-
-## Sub-Skills
-
-Six specialized sub-skills provide deeper, focused expertise:
-
-- **javascript-linting** — ESLint rules, Prettier config, conflict resolution
-- **markdown-linting** — markdownlint rules, GitHub markdown standards
-- **yaml-linting** — GitHub Actions YAML validation, workflow debugging
-- **json-linting** — JSON schema validation, Spectral configuration
-- **npm-linting** — package.json validation, dependency conflicts
-- **php-linting** — PHPStan levels, WordPress PHP standards, type checking
-
-## Getting Help
-
-1. **Check documentation first** — See `docs/TROUBLESHOOTING.md` for 30+ solutions
-2. **Use relevant sub-skill** — For tool-specific guidance
-3. **Share configuration** — Paste your config file for debugging
-4. **Describe the error** — Include full error message and tool name
-5. **WordPress context** — Mention if using block theme, block plugin, or classic theme
-
-## Test Coverage
-
-- 100% unit test coverage (Jest)
-- All major workflows tested (Bats integration tests)
-- GitHub Actions CI validates on every commit
-- 100% test pass rate required
-
----
-
-**Version**: 1.0.0  
-**Repository**: https://github.com/lightspeedwp/ls-wp-linting  
-**Maintainer**: LightSpeed WP Team
+`scripts/validate-config.ts` checks the skill repository's own config files: `npm run validate:config`, or `npm run validate:config -- eslint` for one tool. It is TypeScript run with `tsx`, tested with Vitest (`npm test`, 80% coverage enforced). It is not a linter for user projects; use the project's own tools for those.

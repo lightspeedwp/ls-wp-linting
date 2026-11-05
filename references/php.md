@@ -1,9 +1,4 @@
----
-name: php-linting
-description: Expert in PHP linting and static analysis with PHPStan for WordPress plugins and themes. Debug PHP errors, configure PHPStan analysis levels, resolve type checking issues, and integrate PHP linting into CI/CD pipelines. Use this when the user mentions PHP errors, undefined methods, "Call to undefined method", type errors, PHPStan errors, "Method signature mismatch", "Property is undefined", WordPress PHP standards, WordPress coding standards, "wp_kses_post", "get_post", "register_block_type", PHP type hints, or asks "why is this PHP invalid?" or "how do I fix this PHP error?" Also use for PHP static analysis, WordPress function validation, WordPress plugin PHP issues, WordPress theme PHP issues, PHP type checking, PHPCS standards, or WordPress PHP best practices — even if they don't explicitly name a validation tool. Trigger on any PHP-related error, WordPress hook question, or PHP code review request.
----
-
-# PHP Linting Skill
+# PHP linting
 
 Specialized expertise in PHP static analysis, type checking, and WordPress coding standards for block themes and plugins.
 
@@ -36,6 +31,7 @@ PHPStan has analysis levels 0-9 (higher = stricter):
 **WordPress projects**: Start at level 5-6, increase gradually
 
 **Setup**:
+
 ```neon
 # phpstan.neon
 parameters:
@@ -59,6 +55,7 @@ When PHPStan reports errors like "undefined method" or "undefined property":
 5. **Test locally** - Run `vendor/bin/phpstan analyse` to verify
 
 **Common false positives**:
+
 - WordPress functions (need phpstan-wordpress)
 - Dynamic properties
 - Plugin hooks and filters
@@ -101,9 +98,11 @@ echo $user_input;
 ## Quick Reference
 
 ### "Call to undefined method" Error
+
 → Method doesn't exist on class or is dynamically called
 
 **Fix**:
+
 ```php
 // Bad: method_exists not checked
 $obj->dynamicMethod();
@@ -119,9 +118,11 @@ $obj->realMethod();
 ```
 
 ### "Property is undefined" Error
+
 → Accessing property that doesn't exist
 
 **Fix**:
+
 ```php
 // Bad: property_exists not checked
 $value = $post->custom_property;
@@ -137,9 +138,11 @@ class MyClass {}
 ```
 
 ### "Method signature mismatch" Warning
+
 → Method parameter count or types don't match parent/interface
 
 **Fix**:
+
 ```php
 // Ensure hook callbacks match expected signature
 // WordPress hooks expect: function( $value, $arg2 = null )
@@ -149,7 +152,9 @@ add_filter( 'my_filter', function( $value ) {
 ```
 
 ### Install WordPress Stubs
+
 → PHPStan doesn't recognize WordPress functions
+
 ```bash
 composer require --dev phpstan/phpstan-wordpress
 
@@ -168,6 +173,7 @@ For WordPress block themes and plugins:
 - **WordPress stubs** (phpstan-wordpress) required for function recognition
 
 ### Block Theme PHP Pattern
+
 ```php
 <?php
 // Minimal functions.php for block theme
@@ -179,6 +185,7 @@ add_action( 'after_setup_theme', 'my_theme_setup' );
 ```
 
 ### Block Plugin PHP Pattern
+
 ```php
 <?php
 /**
