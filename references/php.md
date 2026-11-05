@@ -31,6 +31,7 @@ PHPStan has analysis levels 0-9 (higher = stricter):
 **WordPress projects**: Start at level 5-6, increase gradually
 
 **Setup**:
+
 ```neon
 # phpstan.neon
 parameters:
@@ -54,6 +55,7 @@ When PHPStan reports errors like "undefined method" or "undefined property":
 5. **Test locally** - Run `vendor/bin/phpstan analyse` to verify
 
 **Common false positives**:
+
 - WordPress functions (need phpstan-wordpress)
 - Dynamic properties
 - Plugin hooks and filters
@@ -96,9 +98,11 @@ echo $user_input;
 ## Quick Reference
 
 ### "Call to undefined method" Error
+
 → Method doesn't exist on class or is dynamically called
 
 **Fix**:
+
 ```php
 // Bad: method_exists not checked
 $obj->dynamicMethod();
@@ -114,9 +118,11 @@ $obj->realMethod();
 ```
 
 ### "Property is undefined" Error
+
 → Accessing property that doesn't exist
 
 **Fix**:
+
 ```php
 // Bad: property_exists not checked
 $value = $post->custom_property;
@@ -132,9 +138,11 @@ class MyClass {}
 ```
 
 ### "Method signature mismatch" Warning
+
 → Method parameter count or types don't match parent/interface
 
 **Fix**:
+
 ```php
 // Ensure hook callbacks match expected signature
 // WordPress hooks expect: function( $value, $arg2 = null )
@@ -144,7 +152,9 @@ add_filter( 'my_filter', function( $value ) {
 ```
 
 ### Install WordPress Stubs
+
 → PHPStan doesn't recognize WordPress functions
+
 ```bash
 composer require --dev phpstan/phpstan-wordpress
 
@@ -163,6 +173,7 @@ For WordPress block themes and plugins:
 - **WordPress stubs** (phpstan-wordpress) required for function recognition
 
 ### Block Theme PHP Pattern
+
 ```php
 <?php
 // Minimal functions.php for block theme
@@ -174,6 +185,7 @@ add_action( 'after_setup_theme', 'my_theme_setup' );
 ```
 
 ### Block Plugin PHP Pattern
+
 ```php
 <?php
 /**

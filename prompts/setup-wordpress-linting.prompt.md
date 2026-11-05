@@ -13,12 +13,14 @@ Use this prompt to set up complete linting infrastructure for a new or existing 
 ### 1. Verify Project Type
 
 **Block Theme** has:
+
 - `style.css` with `Template` header (or no Template)
 - `functions.php`
 - `theme.json`
 - Often uses `@wordpress/scripts`
 
 **Block Plugin** has:
+
 - `plugin.php` header file
 - `src/` directory for blocks
 - `package.json` with `@wordpress/scripts`

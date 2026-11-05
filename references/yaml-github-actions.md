@@ -22,6 +22,7 @@ When workflows fail or GitHub shows validation errors:
 5. **Test locally** - Run actionlint before pushing
 
 **Common issues**:
+
 - Missing required fields (name, jobs, runs-on)
 - Incorrect indentation (YAML is whitespace-sensitive)
 - Wrong action names or parameters
@@ -53,6 +54,7 @@ steps:
 ```
 
 **Common causes**:
+
 - Mixing tabs and spaces (use spaces only)
 - Incorrect nesting depth
 - Missing colons after keys
@@ -91,9 +93,11 @@ Ensure workflow steps have correct parameters:
 ## Quick Reference
 
 ### "Field is not defined" Error
+
 → Missing required field in workflow or step
 
 **Fix**:
+
 ```yaml
 # Bad: missing 'runs-on'
 jobs:
@@ -111,9 +115,11 @@ jobs:
 ```
 
 ### "Invalid character" Error
+
 → YAML syntax issue (usually indentation or colon)
 
 **Fix**:
+
 ```yaml
 # Bad: tabs instead of spaces
 jobs:
@@ -127,9 +133,11 @@ jobs:
 ```
 
 ### "Unknown action" Error
+
 → Action doesn't exist or wrong version
 
 **Fix**:
+
 ```bash
 # Verify action exists on GitHub Marketplace
 # Format: owner/repo@ref (e.g., actions/checkout@v4)
@@ -145,9 +153,11 @@ jobs:
 ```
 
 ### "Cache path not found" Warning
+
 → Cache path doesn't exist or is empty
 
 **Fix**:
+
 ```yaml
 # Make sure cache path exists before caching
 - uses: actions/setup-node@v4

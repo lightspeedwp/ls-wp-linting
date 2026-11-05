@@ -5,6 +5,7 @@ Use this prompt when you need to debug and fix ESLint problems in a WordPress pr
 ## How to Use This Prompt
 
 When you encounter ESLint errors or configuration issues, share:
+
 1. The error message(s)
 2. Your ESLint config file (`eslint.config.cjs` or `.eslintrc.json`)
 3. Your `package.json` (scripts section)
@@ -19,6 +20,7 @@ Then use this prompt to guide the debugging process.
 ### Step 1: Identify the Issue
 
 Ask yourself:
+
 - Is this a config file syntax error?
 - Is this a rule conflict (ESLint vs Prettier)?
 - Is this a missing parser or plugin?
@@ -49,7 +51,7 @@ npx eslint . --debug 2>&1 | grep -i ignored
 ### Step 3: Check Configuration
 
 1. **Config file exists**: `ls eslint.config.cjs .eslintrc.* 2>/dev/null`
-2. **Config syntax valid**: 
+2. **Config syntax valid**:
    - JSON: `cat .eslintrc.json | python -m json.tool`
    - JS: `node -c eslint.config.cjs`
 3. **Paths correct**: Files in config match actual project structure
@@ -89,26 +91,31 @@ npm run lint -- --max-warnings 0
 ## Common Issues and Fixes
 
 ### "Config file not found"
+
 - Create `eslint.config.cjs` (modern) or `.eslintrc.json` (legacy)
 - Verify in project root
 - Check file name spelling
 
 ### "Rule X is deprecated"
+
 - Update ESLint: `npm install --save-dev eslint@latest`
 - Find replacement in changelog
 - Update all references in config
 
 ### "Cannot find module..."
+
 - Install missing plugin: `npm install --save-dev plugin-name`
 - Update package-lock: `npm install`
 - Clear cache: `npm cache clean --force`
 
 ### "Files not linting"
+
 - Check `.eslintignore` patterns
 - Verify file extensions match config `files` pattern
 - Check if file is in project root or subdirectory
 
 ### "Prettier conflicts"
+
 - Install: `npm install --save-dev eslint-config-prettier`
 - Load LAST in config
 - Disable formatting rules in ESLint
@@ -129,6 +136,7 @@ For WordPress projects:
 ## When to Ask for Help
 
 Provide:
+
 1. Complete error message (not truncated)
 2. Config file(s) (sanitized if needed)
 3. `package.json` scripts section

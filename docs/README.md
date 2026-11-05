@@ -13,16 +13,19 @@ Quick navigation guide for the linting skill documentation.
 ## By Use Case
 
 ### I'm setting up a new WordPress block theme or plugin
+
 1. Read [WORDPRESS.md — Block Themes](WORDPRESS.md#block-themes-wp-scripts) or [Block Plugins](WORDPRESS.md#block-plugins-wp-build)
 2. Follow configuration steps in [CONFIGURATION.md](CONFIGURATION.md)
 3. Set up CI/CD with [CI-CD.md](CI-CD.md) or Git hooks with [LEFTHOOK.md](LEFTHOOK.md)
 
 ### I have a linting error and need to fix it
+
 1. Check [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for your tool (ESLint, Prettier, markdownlint, etc.)
 2. Reference the tool's section in [CONFIGURATION.md](CONFIGURATION.md) for detailed config
 3. Check [WORDPRESS.md — Common Issues](WORDPRESS.md#common-issues) if WordPress-specific
 
 ### I want to understand a specific tool in detail
+
 - **ESLint & Prettier** → [CONFIGURATION.md — JavaScript/TypeScript](CONFIGURATION.md#javascripttypescript), deep focus in [references/javascript-typescript.md](../references/javascript-typescript.md)
 - **markdownlint** → [CONFIGURATION.md — Markdown](CONFIGURATION.md#markdown), deep focus in [references/markdown.md](../references/markdown.md)
 - **YAML/JSON (GitHub Actions)** → [CONFIGURATION.md — YAML/JSON](CONFIGURATION.md#yamljson), deep focus in [references/yaml-github-actions.md](../references/yaml-github-actions.md) and [references/json.md](../references/json.md)
@@ -30,11 +33,13 @@ Quick navigation guide for the linting skill documentation.
 - **package.json** → [CONFIGURATION.md — Package Management](CONFIGURATION.md#package-management), deep focus in [references/npm.md](../references/npm.md)
 
 ### I'm setting up GitHub Actions CI
+
 1. Read [CI-CD.md — Quick Start](CI-CD.md#quick-start) for immediate setup
 2. Check [CI-CD.md — Full Workflow Examples](CI-CD.md#full-workflow-examples) for block themes vs. plugins
 3. Review [CI-CD.md — Caching Strategies](CI-CD.md#caching-strategies) for optimization
 
 ### I want to automate linting with Git hooks
+
 1. Read [LEFTHOOK.md — Installation](LEFTHOOK.md#installation) for setup
 2. Understand [LEFTHOOK.md — Hook Types](LEFTHOOK.md#hook-types) (pre-commit, pre-push, etc.)
 3. See [LEFTHOOK.md — Usage Patterns](LEFTHOOK.md#usage-patterns) for configuration examples

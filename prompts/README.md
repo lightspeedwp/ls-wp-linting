@@ -9,12 +9,14 @@ Reusable workflow templates for common linting setup and debugging tasks.
 **Purpose**: Step-by-step ESLint debugging workflow
 
 **Use when**:
+
 - ESLint configuration is broken or conflicting
 - Need systematic troubleshooting approach
 - Want guidance before implementing fixes
 - Debugging ESLint errors in block themes or plugins
 
 **Workflow**:
+
 1. Configuration validation steps
 2. Gather and inspect error information
 3. Identify root cause
@@ -29,12 +31,14 @@ Reusable workflow templates for common linting setup and debugging tasks.
 **Purpose**: Complete 11-step WordPress linting setup guide
 
 **Use when**:
+
 - Starting a new WordPress block theme or plugin
 - Need to configure all linting tools from scratch
 - Want to ensure best practices are followed
 - Onboarding a team to standard linting setup
 
 **Coverage**:
+
 - Prerequisites (Node.js, npm, etc.)
 - Dependency installation
 - Configuration files for all tools
@@ -51,6 +55,7 @@ Reusable workflow templates for common linting setup and debugging tasks.
 ## How to Use Prompts
 
 ### Option 1: Reference in Conversation
+
 When asking Claude for help, reference the prompt:
 
 ```
@@ -58,9 +63,11 @@ When asking Claude for help, reference the prompt:
 ```
 
 ### Option 2: Copy & Paste Content
+
 Copy the prompt content into the chat directly for a focused session.
 
 ### Option 3: Use as Reference
+
 Review the prompt structure as a checklist for your own debugging or setup process.
 
 ---

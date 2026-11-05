@@ -9,6 +9,7 @@ This skill includes a comprehensive **lefthook** configuration that enforces lin
 [Lefthook](https://github.com/evilmartians/lefthook) is a fast, language-agnostic Git hooks framework written in Go. It enables parallel execution of pre-commit, commit-msg, pre-push, and post-merge hooks.
 
 **Why Lefthook over Husky?**
+
 - ⚡ **Faster** - Written in Go, runs hooks in parallel
 - 🔧 **Simpler** - Single YAML config file, no extra dependencies
 - 🎯 **More reliable** - Fewer environment issues across platforms
@@ -38,6 +39,7 @@ The `lefthook.yml` file defines five hook types:
 Run **before** a commit is created. Validates and auto-fixes code.
 
 **Hooks:**
+
 - **eslint** - Lint JavaScript files, auto-fix enabled
 - **prettier** - Format JS/JSON files, auto-fix enabled
 - **markdownlint** - Validate markdown, auto-fix enabled
@@ -48,6 +50,7 @@ Run **before** a commit is created. Validates and auto-fixes code.
 - **secrets** - Check for hardcoded secrets/API keys
 
 **Example:**
+
 ```bash
 # Automatically triggered when you run: git commit
 # Files are linted, fixed in-place, and re-staged
@@ -58,10 +61,12 @@ Run **before** a commit is created. Validates and auto-fixes code.
 Run **before** a push to remote. Ensures tests pass.
 
 **Hooks:**
+
 - **tests** - Run full Jest test suite
 - **integration-tests** - Run Bats integration tests
 
 **Example:**
+
 ```bash
 # Triggered when you run: git push
 # Full test suite must pass before push succeeds
@@ -72,6 +77,7 @@ Run **before** a push to remote. Ensures tests pass.
 Validates commit message format follows **Conventional Commits**.
 
 **Format:**
+
 ```
 type(scope): subject
 ```
@@ -79,6 +85,7 @@ type(scope): subject
 **Valid types:** feat, fix, chore, docs, style, refactor, perf, test, ci, revert
 
 **Examples:**
+
 - ✅ `feat(eslint): add flat config support`
 - ✅ `fix(prettier): resolve formatting conflicts`
 - ✅ `chore(deps): update dependencies`
@@ -89,6 +96,7 @@ type(scope): subject
 Runs **after** a merge completes. Auto-installs dependencies if `package.json` changed.
 
 **Example:**
+
 ```bash
 # After: git pull origin main
 # If package.json changed, automatically runs: npm install
@@ -107,6 +115,7 @@ Available via `npm run lefthook -- run <command>`:
 | `help` | Show available npm scripts |
 
 **Usage:**
+
 ```bash
 npm run lefthook:validate      # Full validation
 npm run lefthook -- run help    # Show available commands
@@ -140,6 +149,7 @@ git push origin my-feature
 ### What Happens at Each Stage
 
 **Pre-commit:**
+
 1. ESLint checks JavaScript files
 2. Prettier formats code (auto-fixes, re-stages)
 3. markdownlint checks markdown files (auto-fixes)
@@ -147,15 +157,18 @@ git push origin my-feature
 5. Secrets check scans for hardcoded credentials
 
 **Commit message validation:**
+
 - Enforces Conventional Commits format
 - Rejects non-conforming messages with clear error
 
 **Pre-push:**
+
 - Full Jest test suite runs
 - Bats integration tests run
 - Push blocked if any tests fail
 
 **Post-merge:**
+
 - If `package.json` changed, `npm install` runs automatically
 
 ## Skipping Hooks
@@ -170,6 +183,7 @@ git push --no-verify
 ### Skip Specific Situations
 
 Hooks automatically skip during:
+
 - Merge commits (`git merge`)
 - Rebase commits (`git rebase`)
 - Amend commits (`git commit --amend`)
@@ -186,6 +200,7 @@ exclude: "^(node_modules|dist)"    # Excludes directories
 ```
 
 **Common patterns:**
+
 - `**/*.js` - All JavaScript files
 - `src/**/*.jsx` - JSX in src folder
 - `__tests__/**/*` - Test files
@@ -207,6 +222,7 @@ When enabled, auto-fixed files are automatically re-staged for commit. Useful fo
 **Problem:** Pre-commit hooks not executing
 
 **Solution:**
+
 ```bash
 # Reinstall lefthook
 npm run lefthook:install
@@ -221,6 +237,7 @@ ls -la .lefthook/
 **Problem:** Commit fails due to ESLint errors
 
 **Solutions:**
+
 ```bash
 # Auto-fix ESLint errors
 npm run lint:fix
@@ -235,6 +252,7 @@ git commit -m "fix: resolve linting errors"
 **Problem:** "Commit message must follow Conventional Commits format"
 
 **Solution:** Use proper format:
+
 ```bash
 git commit -m "type(scope): subject"
 
@@ -251,6 +269,7 @@ git commit -m "docs: update readme"
 **Reason:** Hooks skip during merge by default (to avoid conflicts)
 
 **Manual fix:**
+
 ```bash
 npm install  # Run manually after merge
 ```
@@ -321,12 +340,14 @@ Lefthook checks run locally. In CI, run the same commands:
 ## Best Practices
 
 1. **Always fix auto-fixable issues:**
+
    ```bash
    npm run lint:fix
    npm run lint:md:fix
    ```
 
 2. **Write clear commit messages:**
+
    ```bash
    git commit -m "feat(config): add new ESLint rule"
    # Not: "updated stuff"
@@ -363,6 +384,7 @@ Lefthook checks run locally. In CI, run the same commands:
 ## Support
 
 For issues:
+
 1. Check `.lefthook-local.yml` for local overrides
 2. Review error messages carefully
 3. Run `npm run lefthook:help` to see available commands

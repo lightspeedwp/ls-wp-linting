@@ -54,6 +54,7 @@ linting/
 ## Features Implemented
 
 ### ✅ Main Skill (linting/SKILL.md)
+
 - Comprehensive description covering all supported tools
 - Quick reference for common linting tasks
 - ESLint, Prettier, markdownlint, PHPStan, YAML/JSON support
@@ -62,6 +63,7 @@ linting/
 - Sub-skill references for deep dives
 
 ### ✅ Documentation
+
 - **README.md**: Installation, quick start, project overview
 - **CONFIGURATION.md**: Complete config reference for all tools
 - **TROUBLESHOOTING.md**: Solutions for 30+ common issues
@@ -69,7 +71,8 @@ linting/
 
 ### ✅ Test Coverage (100%)
 
-**Jest Unit Tests** (__tests__/)
+**Jest Unit Tests** (**tests**/)
+
 - `linting.test.js`: 50+ tests covering:
   - Tool detection (ESLint, Prettier, markdownlint, PHPStan, YAML)
   - Configuration validation
@@ -88,6 +91,7 @@ linting/
   - Config file location detection
 
 **Bats Integration Tests** (tests/)
+
 - `markdown-linting.bats`: 10 tests for markdown validation
 - `javascript-linting.bats`: 10 tests for JavaScript linting
 - `wordpress-integration.bats`: 9 tests for WordPress setup
@@ -95,6 +99,7 @@ linting/
 **Coverage**: 100% branch, function, line, and statement coverage
 
 ### ✅ Test Infrastructure
+
 - `jest.config.js`: Configured for ESM, 100% coverage threshold
 - `.batsrc`: Bats test configuration
 - `package.json`: Comprehensive npm scripts
@@ -105,17 +110,20 @@ linting/
   - `npm run validate` - Full validation pipeline
 
 ### ✅ Prompts
+
 - **debug-eslint.prompt.md**: Step-by-step ESLint debugging workflow
 - **setup-wordpress-linting.prompt.md**: Complete setup guide for new projects
 - Expandable with: debug-prettier, debug-markdownlint, fix-ci-linting, etc.
 
 ### ✅ Scripts
+
 - **validate-config.js**: Validates all linting config files in a project
   - Usage: `node scripts/validate-config.js [tool]`
   - Supports: eslint, prettier, markdownlint, packageJson
   - Expandable with more validators
 
 ### ✅ Sub-Skills
+
 - **javascript-linting**: ESLint & Prettier deep dive
 - **markdown-linting**: markdownlint & GitHub rules
 - **yaml-linting**: GitHub Actions & YAML validation
@@ -126,16 +134,19 @@ linting/
 ## Installation & Testing
 
 ### Prerequisites
+
 - Node.js 18+
 - npm (or pnpm/yarn)
 
 ### Install Dependencies
+
 ```bash
 cd /tmp/linting-skill
 npm install
 ```
 
 ### Run All Tests
+
 ```bash
 # Jest unit tests with coverage
 npm test
@@ -151,6 +162,7 @@ npm run coverage:report
 ```
 
 ### Validate Skill Code
+
 ```bash
 npm run lint          # ESLint check
 npm run lint:fix      # Auto-fix
@@ -161,6 +173,7 @@ npm run validate      # Full validation
 ## Test Results
 
 Expected output:
+
 ```
 ✓ Jest: 90+ tests, 100% coverage
 ✓ Bats: 29+ integration tests, 100% pass rate
@@ -171,6 +184,7 @@ Expected output:
 ## Deployment
 
 ### Option 1: Install to User Skills
+
 ```bash
 # Copy to default location
 mkdir -p ~/.claude/skills
@@ -181,15 +195,17 @@ ls -la ~/.claude/skills/linting/SKILL.md
 ```
 
 ### Option 2: Install from Git Repository
+
 ```bash
 cd ~/.claude/skills
-git clone https://github.com/lightspeedwp/linting.git
+git clone https://github.com/lightspeedwp/ls-wp-linting.git
 cd linting
 npm install
 npm test
 ```
 
 ### Option 3: Create .skill Package (for sharing)
+
 ```bash
 # This would require packaging the skill
 # Currently available as directory structure
@@ -201,7 +217,7 @@ npm test
 2. ✅ 100% test coverage
 3. ✅ Comprehensive documentation
 4. ✅ Task-specific prompts
-5. 🔄 **Ready for**: 
+5. 🔄 **Ready for**:
    - Installation to ~/.claude/skills/
    - Commit to GitHub repository
    - Further enhancement with more sub-skills
@@ -210,9 +226,10 @@ npm test
 ## Repository Ready
 
 Files are ready to commit to:
-https://github.com/lightspeedwp/linting
+<https://github.com/lightspeedwp/ls-wp-linting>
 
 Suggested initial commit:
+
 ```bash
 git add .
 git commit -m "chore: add comprehensive linting skill with 100% test coverage
@@ -230,6 +247,7 @@ git commit -m "chore: add comprehensive linting skill with 100% test coverage
 ## Key Capabilities
 
 This skill can:
+
 - 🔍 Debug ESLint, Prettier, markdownlint, PHPStan configurations
 - 🛠️ Fix linting conflicts and config issues
 - 🔧 Troubleshoot ignore file patterns

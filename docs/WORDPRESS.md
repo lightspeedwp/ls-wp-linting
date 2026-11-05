@@ -17,6 +17,7 @@ Complete linting setup and best practices for WordPress block themes and plugins
 ### What is wp-scripts?
 
 `@wordpress/scripts` is the WordPress standard build tool for block themes. It includes:
+
 - **ESLint** with WordPress coding standards
 - **Prettier** for code formatting
 - **Webpack** for bundling
@@ -60,6 +61,7 @@ wp-scripts provides a default ESLint config. Customize by creating `.eslintrc.js
 ```
 
 **Key WordPress Rules:**
+
 - `camelcase` with `properties: never` - WordPress uses snake_case for properties
 - `ignoreDestructuring: true` - Allow destructuring even if vars are snake_case
 - `no-console` as warning - WordPress outputs warnings, not errors
@@ -134,6 +136,7 @@ my-block-theme/
 ```
 
 **Validation:**
+
 - Use VSCode with JSON schema extension
 - Test with `wp-scripts build` (fails on invalid theme.json)
 - Check schema at [schemas.wp.org](https://schemas.wp.org/wp/6.3/theme.json)
@@ -243,6 +246,7 @@ Each block needs a `block.json` descriptor:
 ```
 
 **Validation:**
+
 - Test with `wp-scripts build` (fails on invalid block.json)
 - Check schema at [developer.wordpress.org](https://developer.wordpress.org/block-editor/)
 - VSCode JSON schema extension recommended
@@ -307,6 +311,7 @@ Create `.eslintrc.json` (extends wp-scripts):
 ### JavaScript/ESLint Standards
 
 **Variable Naming:**
+
 ```javascript
 // ✓ Good - camelCase for variables
 const blockSettings = {
@@ -322,6 +327,7 @@ const myVARiable = '';
 ```
 
 **No console in production:**
+
 ```javascript
 // ✓ Good - console only in development
 if ( process.env.NODE_ENV === 'development' ) {
@@ -333,6 +339,7 @@ console.log( 'This will ship' );
 ```
 
 **Use const, not var:**
+
 ```javascript
 // ✓ Good
 const settings = {};
@@ -344,6 +351,7 @@ var count = 0;
 ```
 
 **Always use semicolons:**
+
 ```javascript
 // ✓ Good
 const name = 'My Block';
@@ -412,6 +420,7 @@ Continue logically.
 **Problem:** theme.json looks correct but `wp-scripts build` fails
 
 **Solutions:**
+
 1. Validate JSON syntax: `node -e "JSON.parse(require('fs').readFileSync('theme.json'))"`
 2. Check schema version matches: `"$schema": "https://schemas.wp.org/wp/6.3/theme.json"`
 3. Test with simpler config first, add complexity gradually
@@ -422,6 +431,7 @@ Continue logically.
 **Problem:** Block not registering, "block.json not found" error
 
 **Solutions:**
+
 1. Verify `block.json` path: should be in block folder (e.g., `src/blocks/my-block/block.json`)
 2. Check spelling: `block.json` (not `blocks.json` or `Block.json`)
 3. Ensure valid JSON: `node -e "JSON.parse(require('fs').readFileSync('src/blocks/my-block/block.json'))"`
@@ -449,6 +459,7 @@ Continue logically.
 ```
 
 This allows:
+
 ```javascript
 // ✓ Valid with proper rules
 const response = {

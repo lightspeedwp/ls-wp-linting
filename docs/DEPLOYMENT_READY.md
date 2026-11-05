@@ -15,6 +15,7 @@
 ## What's Included
 
 ### Core Skill
+
 - ✅ `SKILL.md` - Comprehensive skill definition
 - ✅ `README.md` - Setup and quick start guide
 - ✅ `package.json` - Dependencies and scripts configured
@@ -22,6 +23,7 @@
 - ✅ Config files - ESLint, Prettier, Bats, Lefthook
 
 ### Tests (100% Pass Rate)
+
 - ✅ `__tests__/linting.test.js` - 36 core functionality tests
 - ✅ `__tests__/config-parser.test.js` - 22 config validation tests  
 - ✅ `__tests__/scripts.test.js` - 6 script/package tests
@@ -32,6 +34,7 @@
 **Total**: 64 tests, 100% passing
 
 ### Documentation (5 files)
+
 - ✅ `docs/CONFIGURATION.md` - All tool configurations
 - ✅ `docs/TROUBLESHOOTING.md` - 30+ common issues
 - ✅ `docs/LEFTHOOK.md` - Git hooks setup
@@ -39,13 +42,16 @@
 - ✅ `docs/CI-CD.md` - GitHub Actions examples
 
 ### Prompts (2 files)
+
 - ✅ `prompts/debug-eslint.prompt.md` - ESLint workflow
 - ✅ `prompts/setup-wordpress-linting.prompt.md` - Setup guide
 
 ### Scripts
+
 - ✅ `scripts/validate-config.js` - Config validator
 
 ### Sub-Skills (6 skills)
+
 - ✅ `sub-skills/javascript-linting/SKILL.md`
 - ✅ `sub-skills/markdown-linting/SKILL.md`
 - ✅ `sub-skills/yaml-linting/SKILL.md`
@@ -94,6 +100,7 @@ Time:        0.3s
 ## Features
 
 ### Main Skill Capabilities
+
 - 🔍 Debug ESLint, Prettier, markdownlint, PHPStan
 - 🛠️ Fix configuration conflicts and issues
 - 🔧 Troubleshoot ignore file patterns
@@ -103,6 +110,7 @@ Time:        0.3s
 - 🧪 Test configurations locally and in CI/CD
 
 ### Sub-Skills
+
 1. **javascript-linting** - ESLint & Prettier expert
 2. **markdown-linting** - markdownlint & GitHub rules
 3. **yaml-linting** - GitHub Actions & YAML validation
@@ -111,6 +119,7 @@ Time:        0.3s
 6. **php-linting** - PHPStan & WordPress standards
 
 ### Git Hooks (Lefthook)
+
 - Pre-commit: ESLint, Prettier, markdownlint, config validation, secrets check
 - Pre-push: Jest tests, Bats integration tests
 - Commit-msg: Conventional Commits validation
@@ -143,6 +152,7 @@ npm run lint    # Should show: 0 errors
 All documentation tailored to **WordPress block themes and plugins**:
 
 ### WORDPRESS.md (12 KB)
+
 - Block theme setup with wp-scripts
 - Block plugin setup with wp-build  
 - WordPress coding standards
@@ -152,6 +162,7 @@ All documentation tailored to **WordPress block themes and plugins**:
 - Common WordPress-specific issues
 
 ### CI-CD.md (12 KB)
+
 - Complete GitHub Actions workflows
 - Block theme CI example
 - Block plugin CI example
@@ -162,6 +173,7 @@ All documentation tailored to **WordPress block themes and plugins**:
 - Troubleshooting guide
 
 ### Configuration Examples
+
 - ESLint config with WordPress rules
 - Prettier config for WordPress
 - PHPStan config for WordPress plugins
@@ -235,17 +247,20 @@ Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>
 ## Next Steps for Deployment
 
 1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/lightspeedwp/linting.git
+   git clone https://github.com/lightspeedwp/ls-wp-linting.git
    cd linting
    ```
 
 2. **Copy skill files**
+
    ```bash
    cp -r ~/.claude/skills/linting/* .
    ```
 
 3. **Verify**
+
    ```bash
    npm install
    npm test          # Should pass: 64/64
@@ -253,6 +268,7 @@ Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>
    ```
 
 4. **Commit**
+
    ```bash
    git add .
    git commit -m "chore: add comprehensive linting skill with 100% test coverage"
@@ -260,6 +276,7 @@ Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>
    ```
 
 5. **Create GitHub release** (optional)
+
    ```bash
    git tag v1.0.0
    git push origin v1.0.0
@@ -319,18 +336,21 @@ linting/
 ## Support & Maintenance
 
 ### Team Onboarding
+
 1. Read [README.md](README.md) for setup
-2. Read [docs/WORDPRESS.md](docs/WORDPRESS.md) for WordPress examples
+2. Read [WORDPRESS.md](WORDPRESS.md) for WordPress examples
 3. Try `/linting` skill with a real problem
-4. Review [docs/CI-CD.md](docs/CI-CD.md) for CI integration
+4. Review [CI-CD.md](CI-CD.md) for CI integration
 
 ### Contributing
+
 1. Run tests before committing: `npm test`
 2. Update docs if adding features
 3. Follow Conventional Commits: `feat:`, `fix:`, `docs:`, etc.
 4. Lefthook enforces standards automatically
 
 ### Issues
+
 - Report bugs with error messages and config files
 - Use `/linting` skill for debugging
 - Reference relevant documentation
@@ -340,7 +360,7 @@ linting/
 **Status**: ✅ READY FOR PRODUCTION DEPLOYMENT
 
 All checks pass. The skill is production-ready and can be deployed to
-https://github.com/lightspeedwp/linting immediately.
+<https://github.com/lightspeedwp/ls-wp-linting> immediately.
 
 ---
 

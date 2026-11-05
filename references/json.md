@@ -21,6 +21,7 @@ When users encounter "Unexpected token" or parsing errors:
 4. **Verify formatting** - Run through Prettier to ensure consistent style
 
 **Common causes**:
+
 - Missing commas between properties
 - Trailing commas in objects/arrays (not allowed in JSON)
 - Unescaped quotes or newlines in strings
@@ -61,7 +62,9 @@ When JSON files must match a specific schema (like theme.json or block.json):
 ## Quick Reference
 
 ### "Expected comma" Error
+
 → Check line before error for missing comma after property value
+
 ```json
 {
   "name": "my-project"  // ← Missing comma here
@@ -70,7 +73,9 @@ When JSON files must match a specific schema (like theme.json or block.json):
 ```
 
 ### "Unexpected token }" Error
+
 → Usually a trailing comma before closing brace
+
 ```json
 {
   "name": "my-project",  // ← Trailing comma not allowed in JSON
@@ -78,7 +83,9 @@ When JSON files must match a specific schema (like theme.json or block.json):
 ```
 
 ### "Unexpected end of JSON input" Error
+
 → Missing closing brace or bracket
+
 ```json
 {
   "name": "my-project",
@@ -87,6 +94,7 @@ When JSON files must match a specific schema (like theme.json or block.json):
 ```
 
 ### Validate JSON Without Errors
+
 ```bash
 # Test JSON syntax
 node -e "JSON.parse(require('fs').readFileSync('package.json'))"
@@ -104,6 +112,7 @@ For WordPress block themes and plugins:
 - **package.json** - Must include `wp-scripts` or `wp-build` dependencies for linting integration
 
 Test WordPress JSON files with:
+
 ```bash
 npm run build    # WordPress tools validate JSON during build
 ```

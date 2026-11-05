@@ -13,10 +13,12 @@
 This document outlines the full path from optimization review to GitHub commit, organized in 3 phases.
 
 ## Phase 1: Critical Scaffolding (HIGH PRIORITY)
+
 **Effort**: 2-3 hours | **Impact**: High  
 **Status**: ✅ COMPLETED
 
 ### Tasks
+
 - [x] Optimization review completed
 - [x] Create `docs/README.md` (30 min) — 71 lines
 - [x] Create `prompts/README.md` (20 min) — 92 lines
@@ -28,6 +30,7 @@ This document outlines the full path from optimization review to GitHub commit, 
 - [x] Expand `sub-skills/yaml-linting/SKILL.md` (30 min) — 37→263 lines (+610%)
 
 ### Deliverables
+
 - ✅ 4 new README files (docs, prompts, scripts, tests) — 575 lines total
 - ✅ 4 expanded sub-skill SKILL.md files (118-263 lines each)
 - ✅ All changes markdown validated; existing lint errors in non-modified files only
@@ -35,32 +38,38 @@ This document outlines the full path from optimization review to GitHub commit, 
 ---
 
 ## Phase 2: Triggering Optimization (MEDIUM PRIORITY)
+
 **Effort**: 1-2 hours | **Impact**: High  
 **Status**: 🔵 PENDING
 
 ### Tasks
+
 - [ ] Upgrade `sub-skills/json-linting/SKILL.md` description (15 min)
 - [ ] Upgrade `sub-skills/npm-linting/SKILL.md` description (15 min)
 - [ ] Upgrade `sub-skills/php-linting/SKILL.md` description (15 min)
 - [ ] Upgrade `sub-skills/yaml-linting/SKILL.md` description (15 min)
 
 ### Deliverables
+
 - 4 updated sub-skill descriptions with more specific trigger phrases
 - "Pushy" language encouraging Claude to invoke skills when needed
 
 ---
 
 ## Phase 3: Polish & Consistency (LOW PRIORITY)
+
 **Effort**: 45 minutes | **Impact**: Low  
 **Status**: 🔵 PENDING
 
 ### Tasks
+
 - [ ] Add Table of Contents to `docs/CI-CD.md` (15 min)
 - [ ] Add Table of Contents to `docs/WORDPRESS.md` (15 min)
 - [ ] Clarify Husky/Lefthook in `package.json` and docs (15 min)
 - [ ] Document `references/` directory purpose (15 min)
 
 ### Deliverables
+
 - 2 large docs with TOCs for better navigation
 - Cleaned up Husky/Lefthook references
 - Documented references/ directory
@@ -70,25 +79,30 @@ This document outlines the full path from optimization review to GitHub commit, 
 ## Validation & Commit Sequence
 
 ### Before Each Phase
+
 ```bash
 npm run validate    # Runs: lint + lint:md + test + test:bats
 ```
 
 ### After Phase 1 → Before Phase 2
+
 - [ ] Run `npm run validate` — verify no lint errors
 - [ ] Spot-check new README files in Claude Code
 - [ ] Verify sub-skill SKILL.md files expanded correctly
 
 ### After Phase 2 → Before Phase 3
+
 - [ ] Run `npm run validate` again
 - [ ] Test triggering by asking Claude about each sub-skill topic
 - [ ] Verify descriptions are "pushy" enough
 
 ### After Phase 3 → GitHub Commit
+
 - [ ] Final `npm run validate` run
 - [ ] Review all changes: `git diff`
 - [ ] Stage changes: `git add -A`
 - [ ] Commit with message:
+
   ```bash
   git commit -m "docs: optimize linting skill documentation and triggering
 
@@ -111,6 +125,7 @@ npm run validate    # Runs: lint + lint:md + test + test:bats
   
   Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>"
   ```
+
 - [ ] Verify commit: `git log -1`
 
 ---
@@ -129,22 +144,26 @@ npm run validate    # Runs: lint + lint:md + test + test:bats
 ## Success Criteria
 
 ✅ **Phase 1**:
+
 - All 4 README files created and syntactically valid
 - All 4 sub-skill SKILL.md files expanded to minimum 50 lines
 - No lint errors: `npm run validate` passes
 - New content is clear and follows existing style
 
 ✅ **Phase 2**:
+
 - Sub-skill descriptions updated with 8-10 specific trigger phrases each
 - Descriptions include "pushy" language and clear use cases
 - No new lint errors introduced
 
 ✅ **Phase 3**:
+
 - Large docs have functioning TOCs
 - Husky/Lefthook references are clear and consistent
 - references/ directory has a README explaining its purpose
 
 ✅ **Commit**:
+
 - All changes committed to `main` branch
 - Commit message follows Conventional Commits format
 - Attribution lines included

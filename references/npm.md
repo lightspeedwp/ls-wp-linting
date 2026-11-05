@@ -44,6 +44,7 @@ When npm shows warnings like "peer dependency not found" or "version mismatch":
 5. **Update strategy** - Choose to update major version, minor, or patch
 
 **Common causes**:
+
 - ESLint/Prettier conflicts (need eslint-config-prettier)
 - React version mismatches with plugins
 - WordPress package version constraints
@@ -60,6 +61,7 @@ npm audit fix --force  # Force major version updates (risky)
 ```
 
 **Types of fixes**:
+
 - **Low** - Can usually be ignored for development
 - **Medium** - Should fix before deployment
 - **High/Critical** - Must fix immediately
@@ -75,7 +77,9 @@ npm audit fix --force  # Force major version updates (risky)
 ## Quick Reference
 
 ### "peer dependency not found" Warning
+
 → The dependency declares a peer dependency not installed
+
 ```bash
 # Install the missing peer dependency
 npm install peer-package-name --save-dev
@@ -86,7 +90,9 @@ npm install peer-package-name --save-dev
 ```
 
 ### "cannot find module" Error
+
 → Dependency is declared but not installed
+
 ```bash
 # Reinstall dependencies from lock file
 npm ci  # Use instead of npm install in CI
@@ -97,7 +103,9 @@ npm install
 ```
 
 ### Version Conflict Between Dependencies
+
 → Two packages require incompatible versions
+
 ```bash
 # Check what versions are installed
 npm ls eslint
@@ -111,7 +119,9 @@ npm view eslint versions
 ```
 
 ### "npm ERR! audit severity" in CI
+
 → Security vulnerability found; fix required
+
 ```bash
 npm audit
 npm audit fix           # Auto-fix if possible
@@ -128,6 +138,7 @@ For WordPress block themes and plugins:
 - **Standard devDeps**: `@wordpress/scripts`, `vitest`, `@testing-library/react` for component tests
 
 **WordPress package.json structure**:
+
 ```json
 {
   "name": "my-block-theme",
